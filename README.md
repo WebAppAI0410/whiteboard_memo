@@ -97,8 +97,10 @@ lib/
 1. Flutterをインストール
 2. リポジトリをクローン
 3. 依存関係をインストール: `flutter pub get`
-4. Hiveアダプターを生成: `flutter pub run build_runner build --delete-conflicting-outputs`
-5. アプリを実行: `flutter run`
+4. アプリを実行: `flutter run`
+
+注: Hiveアダプターは既に生成されており、リポジトリに含まれています。モデルファイルを変更した場合のみ、以下のコマンドを実行してアダプターを再生成する必要があります:
+`flutter pub run build_runner build --delete-conflicting-outputs`
 
 ## 有料プラン機能
 
