@@ -54,9 +54,13 @@ class PremiumUpgradeScreen extends ConsumerWidget {
               ),
             ),
             ElevatedButton.icon(
-              onPressed: () {
+              onPressed: () async {
                 // Activate premium (in a real app, this would handle payment)
-                ref.read(isPremiumProvider.notifier).setPremiumStatus(true);
+                await ref.read(isPremiumProvider.notifier).setPremiumStatus(true);
+                
+                // Set expiry date to 1 year from now
+                final expiryDate = DateTime.now().add(const Duration(days: 365));
+                await ref.read(isPremiumProvider.notifier).setPremiumExpiryDate(expiryDate);
                 
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Premium features activated!')),
