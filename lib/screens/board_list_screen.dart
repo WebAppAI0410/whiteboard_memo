@@ -4,6 +4,9 @@ import '../models/board.dart';
 import '../providers/board_provider.dart';
 import '../providers/premium_provider.dart';
 import 'board_edit_screen.dart';
+import 'settings_screen.dart';
+import 'premium_upgrade_screen.dart';
+import '../widgets/board_thumbnail.dart';
 
 class BoardListScreen extends ConsumerWidget {
   const BoardListScreen({Key? key}) : super(key: key);
@@ -21,9 +24,9 @@ class BoardListScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
-              // TODO: Implement settings screen
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Settings coming soon')),
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SettingsScreen()),
               );
             },
           ),
@@ -91,9 +94,9 @@ class BoardListScreen extends ConsumerWidget {
                         : SnackBarAction(
                             label: 'Upgrade',
                             onPressed: () {
-                              // TODO: Implement premium upgrade
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('Premium upgrade coming soon')),
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => const PremiumUpgradeScreen()),
                               );
                             },
                           ),
@@ -189,7 +192,11 @@ class _BoardCard extends ConsumerWidget {
                           color: Colors.grey,
                         ),
                       ),
-                    // TODO: Show a thumbnail preview of the board content
+                    Container(
+                      width: 80,
+                      height: 60,
+                      child: BoardThumbnail(board: board),
+                    ),
                   ],
                 ),
               ),
